@@ -36,24 +36,7 @@ function App() {
 
   return (
     <div className="dashboard-layout">
-      <header className="dashboard-header">
-        <h1>Executive Dashboard</h1>
-        <p>New Hire Summary</p>
-      </header>
 
-      {/* --- ส่วนของการ์ดสรุปข้อมูล (Stat Cards) --- */}
-      <section className="stats-grid">
-        <div className="stat-card">
-          <h3 className="stat-title">Total New Hires</h3>
-          <p className="stat-value">{keyMetrics.totalHires}</p>
-        </div>
-        {/* สามารถเพิ่มการ์ดอื่นๆ ได้ที่นี่ เช่น
-        <div className="stat-card">
-          <h3 className="stat-title">Unique Roles</h3>
-          <p className="stat-value">2</p>
-        </div>
-        */}
-      </section>
 
       {/* --- ส่วนของตารางข้อมูล --- */}
       <main className="table-container">
