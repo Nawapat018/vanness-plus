@@ -1,11 +1,15 @@
 /* --- Fonts and Global Styles --- */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+@import "tailwindcss";
 
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
   background-color: #f4f7fa; /* A softer, more professional background */
   color: #334155;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* --- Main Dashboard Layout --- */
