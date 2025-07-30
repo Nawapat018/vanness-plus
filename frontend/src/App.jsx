@@ -4,7 +4,7 @@ import './App.css';
 // ฟังก์ชันสำหรับสร้าง class ให้กับ Badge ของ Role เพื่อแยกสี
 const getRoleClass = (role) => {
   const roleFormatted = role.toLowerCase().replace(/ /g, '-');
-  return `badge-${roleFormatted}`;
+  return `badge-${roleFormatted}`; // ใช้ backtick สำหรับ template literal
 };
 
 function App() {
@@ -13,11 +13,9 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // บรรทัดนี้จะอ่านค่าจาก Environment Variable ที่เราจะตั้งใน Netlify
-    // ถ้าหาค่าไม่เจอ (เช่นตอนรันบนเครื่องตัวเอง) มันจะใช้ localhost:5000 แทน
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const apiUrl = 'https://vanness-plus.onrender.com';
 
-    fetch(`${apiUrl}/api/new-employees`) // แก้ไขตรงนี้
+    fetch(`${apiUrl}/api/new-employees`) // แก้เป็น backtick
       .then(response => {
         if (!response.ok) throw new Error('Failed to connect to the backend server.');
         return response.json();
@@ -25,23 +23,19 @@ function App() {
       .then(data => setEmployees(data))
       .catch(error => setError(error.message))
       .finally(() => setLoading(false));
-}, []);
+  }, []);
 
   // --- คำนวณ Key Metrics ด้วย useMemo เพื่อประสิทธิภาพ ---
   const keyMetrics = useMemo(() => {
     const totalHires = employees.length;
-    // อาจจะเพิ่มการคำนวณอื่นๆ ได้ในอนาคต เช่น จำนวนตำแหน่งงานที่ไม่ซ้ำกัน
     return { totalHires };
   }, [employees]);
-
 
   if (loading) return <div className="status-display"><h2>Loading Dashboard...</h2></div>;
   if (error) return <div className="status-display"><h2>Error: {error}</h2></div>;
 
   return (
     <div className="dashboard-layout">
-
-
       {/* --- ส่วนของตารางข้อมูล --- */}
       <main className="table-container">
         <h2 className="table-title">New Employee Details</h2>
